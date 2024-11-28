@@ -1,0 +1,31 @@
+{
+  "imports": {
+    "@oak/oak": "jsr:@oak/oak@^17.1.2",
+    "@tajpouria/cors": "jsr:@tajpouria/cors@^1.2.1",
+    "@webview/webview": "jsr:@webview/webview@^0.8.1",
+    "vite": "npm:vite@^5.4.9",
+    "vue": "npm:vue@^3.5.12",
+    "@vitejs/plugin-vue": "npm:@vitejs/plugin-vue@^5.1.4"
+  },
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev:vite": "deno run -A npm:vite --port 8001",
+    "dev:app": "DEV=true deno run -A src/main.ts",
+    "dev": "deno task dev:vite & deno task dev:app",
+    "build:vite": "deno run -A npm:vite build",
+    "build:app": "deno compile --allow-env --allow-ffi --allow-read --allow-net --include dist/ --include src/server_worker.ts --output ./myapp src/main.ts",
+    "compile": "deno task build:vite && deno task build:app",
+    "check": "deno check **/*.ts",
+    "test": "deno test -A",
+    "fmt": "deno fmt",
+    "lint": "deno lint"
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": false
+  }
+}
+ 
